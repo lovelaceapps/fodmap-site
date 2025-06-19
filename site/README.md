@@ -45,3 +45,21 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 This repository includes a GitHub Actions workflow that builds and exports the Next.js site from the `site/` directory. Pushing to the `main` branch will automatically deploy the contents of `site/out` to GitHub Pages.
 
+## Netlify Deployment
+
+To deploy on Netlify, add a `netlify.toml` file at the repository root with the following configuration:
+
+```toml
+[build]
+  base = "site"
+  command = "npm run export"
+  publish = "out"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+```
+
+When connecting the repository on Netlify, it will run `npm run export` inside `site/` and serve the files from `site/out`.
+
