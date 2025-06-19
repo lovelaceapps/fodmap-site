@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { Box, Input, Checkbox, CheckboxGroup, Stack, Heading, Image, Text } from '@chakra-ui/react'
+import { Box, Input, Checkbox, CheckboxGroup, Stack, Heading, Image, Text, ChakraProvider } from '@chakra-ui/react'
 import lowData from '../data.json'
 
 interface Meal {
@@ -51,6 +51,7 @@ export default function Page() {
   const ingredientOptions = Array.from(lowFodmapSet).slice(0, 20)
 
   return (
+    <ChakraProvider>
     <Box p={4} maxW="800px" mx="auto">
       <Heading mb={4}>Low FODMAP Recipes</Heading>
       <Box mb={4}>
@@ -79,5 +80,6 @@ export default function Page() {
         ))}
       </Stack>
     </Box>
+    </ChakraProvider>
   )
 }
